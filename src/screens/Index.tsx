@@ -5,7 +5,7 @@ import { Button } from '../components/Button/Button';
 import { aspect } from '../helpers/AspectRatio';
 import { useFonts, Lato_400Regular, Lato_700Bold} from '@expo-google-fonts/lato';
 
-export default function Index() {
+export default function Index({navigation}) {
   let [fontsLoaded] = useFonts({
     Lato_400Regular,
     Lato_700Bold,
@@ -15,6 +15,10 @@ export default function Index() {
     return null;
   }
 
+  function handleClick(){
+    navigation.navigate("Home");
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style={"dark"} />
@@ -30,7 +34,7 @@ export default function Index() {
         </Text>
         <View>
           <View>
-            <Button>Let's Go</Button>
+            <Button title="Let's Go" onPress={handleClick} />
           </View>
         </View>
       </View>
