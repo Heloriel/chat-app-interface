@@ -1,5 +1,6 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import React from 'react';
+import {Lato_400Regular, useFonts} from '@expo-google-fonts/lato';
 
 type Props = {
     variant?: 'primary' | 'secondary';
@@ -7,13 +8,16 @@ type Props = {
 }
 
 export function Button({ children, variant = 'primary' }: Props) {
-    const buttonVariant = variant; 
+  const [fontsLoaded] = useFonts({
+    Lato_400Regular,
+  });
+  const buttonVariant = variant;
 
-    return (
-      <TouchableOpacity style={styles[buttonVariant]}>
-        <Text style={styles.buttonText}>{ children }</Text>
-      </TouchableOpacity>
-    )
+  return (
+    <TouchableOpacity style={styles[buttonVariant]}>
+      <Text style={styles.buttonText}>{children}</Text>
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -26,6 +30,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#fff',            
+        fontFamily: 'Lato_400Regular',            
+        color: '#fff',
      },
 });

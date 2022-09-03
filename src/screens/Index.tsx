@@ -3,27 +3,35 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button/Button';
 import { aspect } from '../helpers/AspectRatio';
+import { useFonts, Lato_400Regular, Lato_700Bold} from '@expo-google-fonts/lato';
 
 export default function Index() {
+  let [fontsLoaded] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-    <StatusBar style={'dark'} />
+      <StatusBar style={"dark"} />
       <View style={styles.mockupBgMask}>
-          <View style={styles.mockUpContainer}>
-            <Image source={require("../../assets/appmockup.webp")} style={styles.chatMockupImage} />
-          </View>
+        <View style={styles.mockUpContainer}>
+          <Image source={require("../../assets/appmockup.webp")} style={styles.chatMockupImage} />
+        </View>
       </View>
       <View style={styles.wellcomeContainer}>
-        <Text style={styles.wellcomeText}>
-            Let's connect {'\n'} with each other!
-        </Text>
+        <Text style={styles.wellcomeText}>Let's connect {"\n"} with each other!</Text>
         <Text style={styles.greetingText}>
-            Meet your friends, join in more than 10k+ active communities and much more!
+          Meet your friends, join in more than 10k+ active communities and much more!
         </Text>
         <View>
-            <View>
-                <Button>Let's Go</Button>
-            </View>
+          <View>
+            <Button>Let's Go</Button>
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -56,17 +64,20 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         borderTopLeftRadius: 132,
         paddingTop: 64,
-        paddingBottom: 64,  
+        paddingBottom: 64,
+        paddingHorizontal: 14,  
     },
     wellcomeText: {
         textAlign: 'center',
-        fontSize: 28,
+        fontSize: 32,
         fontWeight: 'bold',
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'Lato_700Bold',
     },
     greetingText: {
         color: "#fff",
         textAlign: 'center',
         fontSize: 14,
+        fontFamily: 'Lato_400Regular',
     },
 });
