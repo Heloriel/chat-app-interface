@@ -14,8 +14,8 @@ export default function ChatLink({name}: Props) {
       <Text style={styles.name}>{name}</Text>
       <Text>Lorem ipsun dolor sit amet.</Text>
     </View>
-    <View style={styles.time}>
-      <Text>09:00</Text>
+    <View style={styles.timeContainer}>
+      <Text style={styles.timeText}>09:00</Text>
     </View>
   </TouchableOpacity>
   )
@@ -35,7 +35,11 @@ const styles = StyleSheet.create({
     fontSize: 16
     ,
   },
-  time: {
+  timeContainer: {
     paddingHorizontal: 4,
+  },
+  timeText: {
+    fontSize: 12,
+    color: '#888888'
   },
 });
