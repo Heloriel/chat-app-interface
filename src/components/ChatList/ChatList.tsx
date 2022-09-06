@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import ChatLink from '../ChatLink/ChatLink';
 
 const DATA = [
@@ -17,24 +17,19 @@ const DATA = [
   },
 ];
 
-export const ChatList = () => {
-  const renderItem = ({ item }) => (
-    <ChatLink name={item.name} />
-  );
-
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
+export const ChatList = () => {    
+    return (
+      <View style={styles.container}>
+      {DATA.map((item)=>{
+        return(
+          <ChatLink name={item.name} key={item.id} />
+        );
+      })}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    
   },
 });

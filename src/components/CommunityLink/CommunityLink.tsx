@@ -1,21 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import GroupChatImage from '../GroupChatImage/GroupChatImage';
 
 type Props = {
   name: string;
 }
 
-export default function GroupChatLink({name}: Props) {
+export default function CommunityLink({name}: Props) {
   return (
   <TouchableOpacity style={styles.item}>
-    <GroupChatImage />
-    <View style={styles.content}>
+      <Image source={require('../../../assets/user_default.jpg')} style={styles.image} resizeMode={'cover'} />
       <Text style={styles.name}>{name}</Text>
-      <Text>09:00</Text>
-    </View>
-    <View style={styles.time}>
-    </View>
   </TouchableOpacity>
   )
 }
@@ -23,21 +18,17 @@ export default function GroupChatLink({name}: Props) {
 const styles = StyleSheet.create({
   item: {
     width: '48%',
-    flexDirection: 'row',
-    alignItems: 'center',
+    aspectRatio: 1 /1,
     borderRadius: 8,
     overflow: 'hidden',
     backgroundColor: '#f0f0f0',
     margin: 4,
   },
-  content: {
-    flex: 1,
-    marginLeft: 8,
-  },
   name: {
     fontSize: 16,
   },
-  time: {
-    paddingHorizontal: 4,
-  },
+  image: {
+    width: "100%",
+    height: "100%",    
+  }
 });
