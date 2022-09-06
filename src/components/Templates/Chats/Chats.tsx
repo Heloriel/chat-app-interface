@@ -10,24 +10,26 @@ import { CommunityList } from '../../CommunityList/CommunityList';
 
 export default function Chats() {
   return (
-    <ScrollView style={styles.container}>
-      <TemplateHeader title="Chats" actionMenu={<TouchableOpacity><Icons name='filter-list' size={28} /></TouchableOpacity>} />
-      <View style={styles.categoryHeader}>
-        <SmallCatName title="Friends" py={16} />
-        <SeeAllLink />
-      </View>
-      <ChatList />
-      <View style={styles.categoryHeader}>
-        <SmallCatName title="Group Chats" py={16} />
-        <SeeAllLink />
-      </View>
-      <GroupChatList />
-      <View style={styles.categoryHeader}>
-        <SmallCatName title="Communities" py={16} />
-        <SeeAllLink />
-      </View>
-      <CommunityList />
-    </ScrollView>
+    <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <TemplateHeader title="Chats" actionMenu={<TouchableOpacity><Icons name='filter-list' size={28} /></TouchableOpacity>} />
+          <View style={styles.categoryHeader}>
+            <SmallCatName title="Friends" py={16} />
+            <SeeAllLink />
+          </View>
+          <ChatList />
+          <View style={styles.categoryHeader}>
+            <SmallCatName title="Group Chats" py={16} />
+            <SeeAllLink />
+          </View>
+          <GroupChatList />
+          <View style={styles.categoryHeader}>
+            <SmallCatName title="Communities" py={16} />
+            <SeeAllLink />
+          </View>
+          <CommunityList />
+        </ScrollView>
+    </View>
   )
 }
 
@@ -37,7 +39,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    paddingTop: 24,
+  },
+  scrollView:  {
+    paddingTop: 32,
   },
   categoryHeader: {
     flexDirection: 'row',

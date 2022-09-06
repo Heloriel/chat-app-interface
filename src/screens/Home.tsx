@@ -11,17 +11,16 @@ export default function Home({navigation}) {
   const route = useRoute();
 
   return (
-    <SafeAreaView style={styles.body}>
-        <StatusBar style={'light'} backgroundColor={"#1D2757"} translucent />
-        <Header title={route.name} leftIcon={<Ionicons name='camera' size={28} color="#fff" />} rightIcon={<Ionicons name='search' size={28} color="#fff" />} />
-        <Chats />
+    <SafeAreaView style={[styles.body, StyleSheet.absoluteFill]}>
+          <StatusBar style={'light'} backgroundColor={"#1D2757"} translucent />
+          <Header title={route.name} leftIcon={<Ionicons name='camera' size={28} color="#fff" />} rightIcon={<Ionicons name='search' size={28} color="#fff" />} />
+          <Chats />
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   body:{
-    flex: 1,
     backgroundColor: '#1D2757',
   },
 });
