@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Lato_700Bold, useFonts } from '@expo-google-fonts/lato';
+import { Context, ISearchContext } from '../../contexts/SearchContext';
+import SearchBar from '../SearchBar/SearchBar';
 
 type Props = {
   title: string;
@@ -17,11 +19,13 @@ export default function HeaderTitle({title,leftIcon,rightIcon}: Props) {
     return null;
   }
 
+  const context = useContext<ISearchContext>(Context);
+
   return (
     <View style={styles.container}>
-      <View>{leftIcon}</View>
-      <Text style={styles.screenTitle}>{title}</Text>
-      <View>{rightIcon}</View>
+      <View style={styles.leftIcon}>{leftIcon}</View>
+      <View style={styles.middle}>{context.searchOpen ? <SearchBar /> : <Text style={styles.screenTitle}>{title}</Text>}</View>
+      <View style={styles.rightIcon}>{rightIcon}</View>
     </View>
   )
 }
@@ -38,5 +42,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 22,
     fontFamily: 'Lato_700Bold',
+  },
+  leftIcon: {
+    marginRight: 8,
+  },
+  rightIcon: {
+    marginLeft: 8,
+  },
+  middle: {
+    flex: 1,
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

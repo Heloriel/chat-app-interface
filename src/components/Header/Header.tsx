@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import HeaderTitle from '../HeaderTitle/HeaderTitle'
 import NavTabs from '../NavTabs/NavTabs';
+import SearchContext from '../../contexts/SearchContext';
 
 type Props = {
   title: string;
@@ -12,7 +13,9 @@ type Props = {
 export default function Header({title,leftIcon,rightIcon}: Props) {
   return (
     <View style={styles.container}>
-      <HeaderTitle title={title} leftIcon={leftIcon} rightIcon={rightIcon} />
+      <SearchContext>
+        <HeaderTitle title={title} leftIcon={leftIcon} rightIcon={rightIcon} />
+      </SearchContext>
       <View style={{paddingHorizontal: 10}}>
         <NavTabs />
       </View>
