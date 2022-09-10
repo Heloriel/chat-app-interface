@@ -13,12 +13,12 @@ type Props = {
 export default function SearchButton({color = "#fff",size = 28}: Props) {
   const context = useContext<ISearchContext>(Context);
 
-  function handdlePress(){
+  function handlePress(){
     context.setSearchOpen(!context.searchOpen);
   }
 
   return (
-    <TouchableHighlight onPress={handdlePress}>
+    <TouchableHighlight onPress={handlePress}>
       {context.searchOpen ? <Icons name="close" color={color} size={size}/> : <Icons name="search" color={color} size={size}/>}
     </TouchableHighlight>
   )

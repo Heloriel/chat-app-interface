@@ -11,6 +11,8 @@ type Props = {
 }
 
 export default function HeaderTitle({title,leftIcon,rightIcon}: Props) {
+  const context = useContext<ISearchContext>(Context);
+  
   const [fontsLoaded] = useFonts({
     Lato_700Bold,
   });
@@ -19,7 +21,6 @@ export default function HeaderTitle({title,leftIcon,rightIcon}: Props) {
     return null;
   }
 
-  const context = useContext<ISearchContext>(Context);
 
   return (
     <View style={styles.container}>

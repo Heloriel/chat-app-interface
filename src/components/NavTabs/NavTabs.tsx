@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Lato_400Regular ,useFonts } from '@expo-google-fonts/lato';
+import { Context, IHomeContext } from '../../contexts/HomeContext';
 
 export default function NavTabs() {
+  const hContext = useContext<IHomeContext>(Context);
+
   const [fontsLoaded] = useFonts({
     Lato_400Regular,
   });
@@ -11,11 +14,19 @@ export default function NavTabs() {
     return null;
   }
 
+  function handlePress(template: 'chats' | 'status' | 'calls'){
+    hContext.setCurrentTemplate(template);
+  }
+
+  function isActive(template: 'chats' | 'status' | 'calls'){
+    return template == hContext.currentTemplate && styles.navItemActive;
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={[styles.navItem, styles.navItemActive]}><Text style={styles.navItemText}>Chats</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}><Text style={styles.navItemText}>Staus</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}><Text style={styles.navItemText}>Calls</Text></TouchableOpacity>
+      <TouchableOpacity style={[styles.navItem, isActive('chats')]} onPress={() => handlePress('chats')}><Text style={styles.navItemText}>Chats</Text></TouchableOpacity>
+      <TouchableOpacity style={[styles.navItem, isActive('status')]} onPress={() => handlePress('status')}><Text style={styles.navItemText}>Staus</Text></TouchableOpacity>
+      <TouchableOpacity style={[styles.navItem, isActive('calls')]} onPress={() => handlePress('calls')}><Text style={styles.navItemText}>Calls</Text></TouchableOpacity>
     </View>
   )
 }
