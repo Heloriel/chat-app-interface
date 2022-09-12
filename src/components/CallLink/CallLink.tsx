@@ -2,17 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import StatusPreview from '../StatusPreview/StatusPreview';
 import Icons from '@expo/vector-icons/MaterialIcons'
+import CallStatus from '../CallStatus/CallStatus';
+import UserAvatar from '../UserAvatar/UserAvatar';
 
 type Props = {
-  opened?: boolean;
+  status: 'received' | 'lost' | 'made';
 }
 
-export default function CallLink({ opened }: Props) {
+export default function CallLink({ status }: Props) {
   return (
        <View style={styles.container}>
         <TouchableOpacity style={styles.user}>
           <View style={styles.preview}>
-            { opened ? <StatusPreview viewed /> :  <StatusPreview />}
+            <UserAvatar />
           </View>
           <View>
             <View>
@@ -28,7 +30,7 @@ export default function CallLink({ opened }: Props) {
           <Icons name="block" size={24} color="#1D2757" style={styles.action} />
         </View>        
         <View>
-          <Icons name="call-missed" size={24} color="#1D2757" style={styles.callStatus}/>
+          <CallStatus status={status} />
         </View>        
       </View>
   )
@@ -48,14 +50,10 @@ const styles = StyleSheet.create({
   },
   actionsContainer: {
     flexDirection: 'row',
+    paddingHorizontal: 4,
   },
   action: {
     marginHorizontal: 10,
-  },
-  callStatus: {
-    backgroundColor: 'red',
-    borderRadius: 8,
-    padding: 8,
   },
   preview: {
     marginRight: 16,

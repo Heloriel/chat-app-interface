@@ -6,8 +6,10 @@ import SmallCatName from '../SmallCatName/SmallCatName';
 export default function CallsList() {
   return (
     <View style={styles.container}>
-      <SmallCatName title='Today' py={8} />
-      <CallLink />
+      <SmallCatName title='Recent' py={8} />
+      <CallLink status='received' />
+      <CallLink status='lost' />
+      <CallLink status='made' />
     </View>
   )
 }
