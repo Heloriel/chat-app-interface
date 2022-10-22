@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import ChatLink from '../ChatLink/ChatLink';
+import { IChatProps } from '../Templates/Chats/Chats';
 
 const DATA = [
   {
@@ -17,12 +18,12 @@ const DATA = [
   },
 ];
 
-export const ChatList = () => {    
+export const ChatList = ({navigation}: IChatProps) => {    
     return (
       <View style={styles.container}>
       {DATA.map((item)=>{
         return(
-          <ChatLink name={item.name} key={item.id} />
+          <ChatLink name={item.name} key={item.id} navigation={navigation} />
         );
       })}
     </View>

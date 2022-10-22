@@ -1,19 +1,19 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Index from './screens/Index';
 import Home from './screens/Home';
+import Chat from './screens/Chat';
+import {NavigationParamsList} from './@types/types';
 
-type RootStackParamList = {
-  Index: undefined;
-  Home: undefined;
-};
+const MainStack = createNativeStackNavigator<NavigationParamsList>();
+const { Navigator, Screen } = MainStack;
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function Router() {
   return (
-    <Stack.Navigator initialRouteName='Index'>
-      <Stack.Screen name="Index" component={Index} options={{headerShown: false}}  />
-      <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
-    </Stack.Navigator>
+    <Navigator initialRouteName='index'>
+      <Screen name="index" component={Index} options={{headerShown: false}}  />
+      <Screen name="home" component={Home} options={{headerShown: false}} />
+      <Screen name="chat" component={Chat} options={{headerShown: false}} />
+    </Navigator>
   );
 }

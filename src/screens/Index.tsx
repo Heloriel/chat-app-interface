@@ -1,11 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button/Button';
 import { aspect } from '../helpers/AspectRatio';
 import { useFonts, Lato_400Regular, Lato_700Bold} from '@expo-google-fonts/lato';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NavigationParamsList } from '../@types/types';
 
-export default function Index({navigation}) {
+export interface IIndexProps {
+  navigation: NativeStackNavigationProp<NavigationParamsList, 'index'>;
+}
+
+export default function Index({navigation}: IIndexProps) {
   let [fontsLoaded] = useFonts({
     Lato_400Regular,
     Lato_700Bold,
@@ -16,12 +21,11 @@ export default function Index({navigation}) {
   }
 
   function handleClick(){
-    navigation.navigate("Home");
+    navigation.navigate('home');
   }
   
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style={"dark"} />
       <View style={styles.mockupBgMask}>
         <View style={styles.mockUpContainer}>
           <Image source={require("../../assets/appmockup.webp")} style={styles.chatMockupImage} />

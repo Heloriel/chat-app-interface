@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TouchableHighlight } from 'react-native';
+import { StyleSheet, TouchableHighlight } from 'react-native';
 import Icons from "@expo/vector-icons/Ionicons";
 import { Context, ISearchContext } from '../../contexts/SearchContext';
 

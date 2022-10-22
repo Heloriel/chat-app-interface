@@ -7,8 +7,14 @@ import { ChatList } from '../../ChatList/ChatList';
 import { GroupChatList } from '../../GroupChatList/GroupChatList';
 import SeeAllLink from '../../SeeAllLink/SeeAllLink';
 import { CommunityList } from '../../CommunityList/CommunityList';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NavigationParamsList } from '../../../@types/types';
 
-export default function Chats() {
+export interface IChatProps {
+  navigation: NativeStackNavigationProp<NavigationParamsList>;
+}
+
+export default function Chats({navigation}: IChatProps) {
   return (
     <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
@@ -17,7 +23,7 @@ export default function Chats() {
             <SmallCatName title="Friends" py={16} />
             <SeeAllLink />
           </View>
-          <ChatList />
+          <ChatList navigation={navigation} />
           <View style={styles.categoryHeader}>
             <SmallCatName title="Group Chats" py={16} />
             <SeeAllLink />

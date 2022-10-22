@@ -27,11 +27,9 @@ export default function CallLink({ status }: Props) {
         </TouchableOpacity>
         <View style={styles.actionsContainer}>
           <Icons name="call" size={24} color="#1D2757" style={styles.action} />
-          <Icons name="block" size={24} color="#1D2757" style={styles.action} />
-        </View>        
-        <View>
+          <Icons name="block" size={24} color="#1D2757" style={[styles.action, {marginEnd: 14}]} />
           <CallStatus status={status} />
-        </View>        
+        </View>             
       </View>
   )
 }
@@ -51,6 +49,7 @@ const styles = StyleSheet.create({
   actionsContainer: {
     flexDirection: 'row',
     paddingHorizontal: 4,
+    alignItems: 'center',
   },
   action: {
     marginHorizontal: 10,
